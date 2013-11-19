@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131119010808) do
+ActiveRecord::Schema.define(:version => 20131119022138) do
+
+  create_table "addresses", :force => true do |t|
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.integer  "state_id"
+    t.string   "zipcode"
+    t.integer  "country_id"
+    t.string   "phone"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "assets", :force => true do |t|
     t.integer  "viewable_id"
@@ -27,14 +41,22 @@ ActiveRecord::Schema.define(:version => 20131119010808) do
 
   add_index "assets", ["viewable_type", "viewable_id"], :name => "index_assets_on_viewable_type_and_viewable_id"
 
+  create_table "countries", :force => true do |t|
+    t.string  "iso_name"
+    t.string  "iso"
+    t.string  "name"
+    t.string  "iso3"
+    t.integer "numcode"
+  end
+
   create_table "events", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.string   "location"
     t.datetime "start_at"
     t.datetime "stop_at"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "address_id"
   end
 
   add_index "events", ["name"], :name => "index_events_on_name"
@@ -69,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20131119010808) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin",           :default => false
+    t.integer  "address_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

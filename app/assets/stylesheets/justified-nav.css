@@ -29,6 +29,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f5f5', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
   background-image: linear-gradient(top, #f5f5f5 0%,#e5e5e5 100%); /* W3C */
 }
+.nav-justified > li.open > a,
 .nav-justified > .active > a,
 .nav-justified > .active > a:hover,
 .nav-justified > .active > a:focus {
@@ -39,6 +40,7 @@
 .nav-justified > li:last-child > a {
   border-bottom: 0;
 }
+
 @media (min-width: 500px) {
   .nav-justified {
     max-height: 42px;

@@ -5,6 +5,10 @@ $screen-xs-min: 500px;
 $container-lg: 780px;
 $grid-gutter-width:20px;
 $container-md: 780px;
+$dropdown-link-active-bg: #6c705a;
+$dropdown-link-color: #6c705a;
+$brand-primary: #6c705a;
+
 @import "bootstrap";
 
 /* mixins, variables, etc. */
