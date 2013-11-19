@@ -11,27 +11,55 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120308215846) do
+ActiveRecord::Schema.define(:version => 20131119010808) do
 
-  create_table "microposts", :force => true do |t|
-    t.string   "content"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "assets", :force => true do |t|
+    t.integer  "viewable_id"
+    t.string   "viewable_type"
+    t.string   "attachment_content_type"
+    t.string   "attachment_file_name"
+    t.string   "attachment_file_size"
+    t.string   "type"
+    t.datetime "attachment_updated_at"
+    t.integer  "attachment_width"
+    t.integer  "attachment_height"
   end
 
-  add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
+  add_index "assets", ["viewable_type", "viewable_id"], :name => "index_assets_on_viewable_type_and_viewable_id"
 
-  create_table "relationships", :force => true do |t|
-    t.integer  "follower_id"
-    t.integer  "followed_id"
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "location"
+    t.datetime "start_at"
+    t.datetime "stop_at"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
-  add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
-  add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
-  add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
+  add_index "events", ["name"], :name => "index_events_on_name"
+  add_index "events", ["start_at"], :name => "index_events_on_start_at"
+
+  create_table "presentations", :force => true do |t|
+    t.integer  "facilitator_id"
+    t.string   "name"
+    t.datetime "start_at"
+    t.datetime "stop_at"
+    t.string   "location"
+    t.text     "description"
+    t.string   "slide"
+    t.string   "type"
+  end
+
+  add_index "presentations", ["facilitator_id"], :name => "index_presentations_on_facilitator_id"
+  add_index "presentations", ["name"], :name => "index_presentations_on_name"
+  add_index "presentations", ["start_at"], :name => "index_presentations_on_start_at"
+
+  create_table "roles", :force => true do |t|
+    t.string "name"
+  end
+
+  add_index "roles", ["name"], :name => "index_roles_on_name"
 
   create_table "users", :force => true do |t|
     t.string   "name"
