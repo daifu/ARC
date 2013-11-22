@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   before_filter :check_for_conference_year
-  helper_method :check_for_conference_year
+  before_filter :track_referral_url
+
+  helper_method :check_for_conference_year, :current_user
 
   protect_from_forgery
   include SessionsHelper
@@ -22,6 +24,15 @@ class ApplicationController < ActionController::Base
 
   def year_detected?
     !ENV['ARC_CONFERENCE_YEAR'].nil? ? true : false;
+  end
+
+  def track_referral_url
+    # should only track the first occurance of the referrer
+    session[:referral_url] ||= request.referrer
+  end
+
+  def current_user
+    @current_user ||= User.find_by_remember_token(cookies[:remember_token])
   end
 
 end

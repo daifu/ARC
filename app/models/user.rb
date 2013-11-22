@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
   after_validation { self.errors.messages.delete(:password_digest) }
 
+  accepts_nested_attributes_for :address, :allow_destroy => true
+
   private
 
     def create_remember_token

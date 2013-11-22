@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131119022138) do
+ActiveRecord::Schema.define(:version => 20131121065314) do
 
   create_table "addresses", :force => true do |t|
     t.string   "firstname"
@@ -23,8 +23,15 @@ ActiveRecord::Schema.define(:version => 20131119022138) do
     t.string   "zipcode"
     t.integer  "country_id"
     t.string   "phone"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.string   "organization"
+    t.string   "state_name"
+    t.string   "title"
+    t.string   "degree"
+    t.string   "badge_first_name"
+    t.string   "alternative_contact_name"
+    t.string   "alternative_contact_phone_or_email"
   end
 
   create_table "assets", :force => true do |t|
@@ -57,10 +64,24 @@ ActiveRecord::Schema.define(:version => 20131119022138) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "address_id"
+    t.string   "eid"
   end
 
+  add_index "events", ["eid"], :name => "index_events_on_eid"
   add_index "events", ["name"], :name => "index_events_on_name"
   add_index "events", ["start_at"], :name => "index_events_on_start_at"
+
+  create_table "orders", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "number"
+    t.decimal  "total",                        :precision => 8, :scale => 2
+    t.string   "referral_url", :limit => 2048
+    t.string   "user_agent",   :limit => 512
+    t.datetime "paid_at"
+    t.datetime "created_at",                                                 :null => false
+    t.datetime "updated_at",                                                 :null => false
+    t.integer  "event_id"
+  end
 
   create_table "presentations", :force => true do |t|
     t.integer  "facilitator_id"
@@ -82,6 +103,12 @@ ActiveRecord::Schema.define(:version => 20131119022138) do
   end
 
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "states", :force => true do |t|
+    t.string  "name"
+    t.string  "abbr"
+    t.integer "country_id"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

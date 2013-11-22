@@ -9,7 +9,7 @@
     <li class="<%= controller.action_name == 'about_us'   ? 'active' : '' %>"><%= link_to "About Us", about_us_path %></li>
     <li class="<%= controller.action_name == 'program'    ? 'active' : '' %>"><%= link_to "Program",  program_path %></li>
     <li class="<%= controller.action_name == 'travel'     ? 'active' : '' %>"><%= link_to "Travel", travel_path %></li>
-    <li class="<%= controller.action_name == 'register_info'   ? 'active' : '' %>"><%= link_to "Register Now", register_info_path %></li>
+    <li class="<%= controller.action_name == 'index'   ? 'active' : '' %>"><%= link_to "Register Now", events_path %></li>
 
     <% if signed_in? %>
       <li><%= link_to "Users", users_path %></li>

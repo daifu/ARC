@@ -1,26 +1,4 @@
-SampleApp::Application.routes.draw do
-  resources :users do
-    member do
-      get :following, :followers
-    end
-  end
-  resources :sessions, only: [:new, :create, :destroy]
-  resources :microposts, only: [:create, :destroy]
-  resources :relationships, only: [:create, :destroy]
-      
-  root to: 'static_pages#home'
-
-  match '/signup',  to: 'users#new'
-  match '/signin',  to: 'sessions#new'
-  match '/signout', to: 'sessions#destroy', via: :delete
-      
-  match '/about_us',  to: 'static_pages#about_us'
-  match '/program',   to: 'static_pages#program'
-  match '/workshop',  to: 'static_pages#workshop'
-  match '/partners',  to: 'static_pages#partners'
-  match '/travel',    to: 'static_pages#travel'
-  match '/contact_us',to: 'static_pages#contact_us'
-  match '/register_info',  to: 'static_pages#register_info'
+ARC4EM::Application.routes.draw do
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -78,4 +56,27 @@ SampleApp::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :sessions, only: [:new, :create, :destroy]
+      
+  root to: 'static_pages#home'
+
+  match '/signup',  to: 'users#new'
+  match '/signin',  to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
+      
+  match '/about_us',  to: 'static_pages#about_us'
+  match '/program',   to: 'static_pages#program'
+  match '/workshop',  to: 'static_pages#workshop'
+  match '/partners',  to: 'static_pages#partners'
+  match '/travel',    to: 'static_pages#travel'
+  match '/contact_us',to: 'static_pages#contact_us'
+  
+  resources :events
+  resources :orders
+
 end
