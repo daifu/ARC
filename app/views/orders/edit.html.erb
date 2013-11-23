@@ -4,5 +4,5 @@
   <%= f.fields_for :address, @order.user.address do |address| %>
     <%= render :partial => 'addresses/form', :locals => {:f => address} %>
   <% end %>
-  <%= f.submit 'Submit' %>
+  <%= f.submit 'Submit', :class => 'btn btn-primary' %>
 <% end %>
