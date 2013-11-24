@@ -1,0 +1,15 @@
+<%= form_for @order do |f| %>
+  <h1>Registration Form</h1>
+  <hr />
+  <%= f.fields_for :user, @order.user do |user| %>
+    <%= user.fields_for :address, @order.user.address do |address| %>
+      <%= render :partial => 'addresses/form', :locals => {:f => address} %>
+    <% end %>
+    <hr />
+    <p>Please describe any special arrangements needed due to physical limitations and/or dietary requirements:</p>
+  <% end %>
+  <%= f.text_area :comment, :class => 'text-area-height' %>
+  <br/>
+  <br/>
+  <%= f.submit 'Submit', :class => 'btn btn-primary' %>
+<% end %>

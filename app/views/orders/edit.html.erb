@@ -1,8 +1,0 @@
-<%= form_for @order.user do |f| %>
-  <h1>Registration Form</h1>
-  <hr />
-  <%= f.fields_for :address, @order.user.address do |address| %>
-    <%= render :partial => 'addresses/form', :locals => {:f => address} %>
-  <% end %>
-  <%= f.submit 'Submit', :class => 'btn btn-primary' %>
-<% end %>

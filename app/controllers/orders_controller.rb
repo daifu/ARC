@@ -1,25 +1,31 @@
 class OrdersController < ApplicationController
-  before_filter :find_event, :only   => [:create]
-  before_filter :find_order, :except => [:create]
+  before_filter :find_event, :only => [:new]
+  before_filter :find_order, :only => [:edit]
 
   force_ssl
 
   # Create an order while people click the Register Now button
   #
   def create
-    @order = Order.new
-    @order.user = @user
-    @order.event = @event
+    @order = Order.new(params[:order])
     if @order.save
-      redirect_to edit_order_url(@order)
+      redirect_to new_payment_url(@order)
     else
-      render show_event_url
+      flash[:notice] = @order.errors.full_messages.join('<br/>').html_safe
+      render(:new)
     end
+  end
+
+  def new
+    @order = Order.new
+    @order.user = find_user
+    @order.user.address = Address.new(:country_id => 214) if @order.user.address.nil?
+    @countries = Country.all
+    @states = State.all
   end
 
   def edit
     @order.user = find_user
-    @order.user.address = Address.new if @order.user.address.nil?
   end
 
   private

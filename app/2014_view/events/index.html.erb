@@ -1,8 +1,5 @@
 <h1>Registration Information</h1>
 
 <div class="center">
-  <%= form_for @order do |f| %>
-    <%= hidden_field_tag :event_id, @event.id %>
-    <%= f.submit 'Register Now', :class => 'btn btn-primary' %>
-  <% end %>
+  <%= link_to 'Register Now', new_order_path, :class => 'btn btn-primary' %>
 </div>

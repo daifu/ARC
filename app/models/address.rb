@@ -1,5 +1,5 @@
 class Address < ActiveRecord::Base
-  attr_accessible :firstname, :lastname, :address1, :address2, :city, :zipcode
+  attr_accessible :firstname, :lastname, :address1, :address2, :city, :zipcode, :title, :degree, :organization, :country_id, :state_id, :state
 
   belongs_to :event
   belongs_to :user
@@ -8,6 +8,8 @@ class Address < ActiveRecord::Base
 
   validates_presence_of :firstname
   validates_presence_of :lastname
+  validates_presence_of :address1
+  validates_presence_of :address2
   validates_presence_of :state, if: :is_us?
   validates_presence_of :state_name
   validates_presence_of :city,  if: :is_us?
@@ -21,6 +23,9 @@ class Address < ActiveRecord::Base
 
   before_validation :ensure_state_name_is_prescence_for_us
 
+  accepts_nested_attributes_for :country, :allow_destroy => false
+  accepts_nested_attributes_for :state,   :allow_destroy => false
+
   def is_us?
     country.iso == 'US' if country
   end
@@ -33,7 +38,7 @@ class Address < ActiveRecord::Base
 
     def ensure_state_name_is_prescence_for_us
       # ensure state name is here for us
-      self.state_name = state.name if is_us? && self.state_name.nil?
+      self.state_name = self.state.name if is_us? && self.state_name.nil? && state
     end
 
 end

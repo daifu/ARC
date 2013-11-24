@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :address_attributes
   has_secure_password
 
   has_and_belongs_to_many :events
-  has_one :address
+  belongs_to :address
+  has_many :orders
 
   before_save { email.downcase! }
   before_save :create_remember_token

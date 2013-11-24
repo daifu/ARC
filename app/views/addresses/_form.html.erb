@@ -1,4 +1,7 @@
-<div class="row">
+<%# local variables: %>
+<%# f: form object %>
+<%# countries: all the countries %>
+<div class="row form-row">
   <div class="col-lg-6">
     <label>First Name</label>
     <%= f.text_field :firstname %>
@@ -9,7 +12,7 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row form-row">
   <div class="col-lg-6">
     <label>Title:</label>
     <%= f.text_field :title %>
@@ -20,7 +23,7 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row form-row">
   <div class="col-lg-6">
     <label>Organization:</label>
     <%= f.text_field :organization %>
@@ -32,7 +35,7 @@
 </div>
 <hr>
 
-<div class="row">
+<div class="row form-row">
   <div class="col-lg-6">
     <label>Address1:</label>
     <%= f.text_field :address1 %>
@@ -40,5 +43,31 @@
   <div class="col-lg-6">
     <label>Address2:</label>
     <%= f.text_field :address2 %>
+  </div>
+</div>
+
+<div class="row form-row">
+  <div class="col-lg-6 country">
+    <label>Country:</label>
+    <%= f.select :country_id, Country.all.collect {|country| [country.name, country.id]}, selected: '214', include_blank: true %>
+  </div>
+  <div class="col-lg-6 city">
+    <label>State:</label>
+    <% unless f.object.is_us? %>
+      <%= f.text_field :state %>
+    <% else %>
+      <%= f.select :state_id, State.all.collect {|state| [state.name, state.id]}, include_blank: true %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row form-row">
+  <div class="col-lg-6">
+    <label>City:</label>
+    <%= f.text_field :city %>
+  </div>
+  <div class="col-lg-6">
+    <label>Zip/Postal code:</label>
+    <%= f.text_field :zipcode %>
   </div>
 </div>
