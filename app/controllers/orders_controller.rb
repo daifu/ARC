@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
   #
   def create
     @order = Order.new(params[:order])
+    @order.user.add_dummy_email_and_password
     if @order.save
       redirect_to new_payment_url(@order)
     else

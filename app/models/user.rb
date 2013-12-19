@@ -19,6 +19,12 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :address, :allow_destroy => true
 
+  def add_dummy_email_and_password
+    self.name  ||= "tmp_user_#{SecureRandom.hex(5)}"
+    self.email ||= "#{SecureRandom.hex(5)}@arc4em.org"
+    self.password_confirmation ||= self.password = SecureRandom.hex(5)
+  end
+
   private
 
     def create_remember_token

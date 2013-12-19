@@ -7,6 +7,8 @@ class Order < ActiveRecord::Base
 
   attr_accessible :comment, :user_attributes, :user_id
 
+  include Order::States
+
   def params
     number
   end
