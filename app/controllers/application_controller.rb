@@ -35,4 +35,10 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by_remember_token(cookies[:remember_token])
   end
 
+  def render_404
+    respond_to do |type|
+      type.all {render :template => 'public/404.html'}
+    end
+  end
+
 end

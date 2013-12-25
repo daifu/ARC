@@ -62,6 +62,7 @@ ARC4EM::Application.routes.draw do
     end
   end
   resources :sessions, only: [:new, :create, :destroy]
+  resources :payments
       
   root to: 'static_pages#home'
 

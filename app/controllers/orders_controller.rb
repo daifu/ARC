@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
     @order = Order.new(params[:order])
     @order.user.add_dummy_email_and_password
     if @order.save
-      redirect_to new_payment_url(@order)
+      redirect_to new_payment_path(@order)
     else
       flash[:notice] = @order.errors.full_messages.join('<br/>').html_safe
       render(:new)
