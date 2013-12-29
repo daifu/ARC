@@ -2,7 +2,7 @@ class PaymentsController < ApplicationController
   before_filter :find_order
 
   def new
-    @order.payments.create
+    @payment = @order.payments.build
   end
 
   def create

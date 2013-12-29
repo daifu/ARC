@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
   private
 
   def find_order
-    @order = Order.find(params[:id])
+    @order = Order.find_by_number(params[:id])
   end
 
   def find_event
