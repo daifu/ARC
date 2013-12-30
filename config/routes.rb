@@ -62,7 +62,6 @@ ARC4EM::Application.routes.draw do
     end
   end
   resources :sessions, only: [:new, :create, :destroy]
-  resources :payments
       
   root to: 'static_pages#home'
 
@@ -76,8 +75,19 @@ ARC4EM::Application.routes.draw do
   match '/partners',  to: 'static_pages#partners'
   match '/travel',    to: 'static_pages#travel'
   match '/contact_us',to: 'static_pages#contact_us'
+  match '/coupons/new/:coupon_type', to: 'coupons#new', as: 'new_coupon_type'
   
-  resources :events
-  resources :orders
+  resources :events do
+    resources :orders
+  end
+
+  resources :orders do
+    resources :payments
+  end
+  resources :coupons do
+    collection do
+      get :select
+    end
+  end
 
 end

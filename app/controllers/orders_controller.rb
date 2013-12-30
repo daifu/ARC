@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
     @order = Order.new(params[:order])
     @order.user.add_dummy_email_and_password
     if @order.save
-      redirect_to new_payment_path(@order)
+      redirect_to new_order_payment_path(@order)
     else
       flash[:notice] = @order.errors.full_messages.join('<br/>').html_safe
       render(:new)
@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @order = Order.new
+    @order = @event.orders.build
     @order.user = find_user
     @order.user.address = Address.new(:country_id => 214) if @order.user.address.nil?
     @countries = Country.all
@@ -36,7 +36,7 @@ class OrdersController < ApplicationController
   end
 
   def find_event
-    @event = Event.find_by_eid(params[:event_id])
+    @event = Event.find_by_id(params[:event_id])
   end
 
   def find_user

@@ -12,6 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
+//= require bootstrap/dropdown
 //= require inheritance
-//= require_tree .
+//= require static_pages
+//= require arc4em
+//= require coupons
+//= require bootstrap-datetimepicker.min

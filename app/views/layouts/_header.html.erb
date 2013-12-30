@@ -9,10 +9,9 @@
     <li class="<%= controller.action_name == 'about_us'   ? 'active' : '' %>"><%= link_to "About Us", about_us_path %></li>
     <li class="<%= controller.action_name == 'program'    ? 'active' : '' %>"><%= link_to "Program",  program_path %></li>
     <li class="<%= controller.action_name == 'travel'     ? 'active' : '' %>"><%= link_to "Travel", travel_path %></li>
-    <li class="<%= controller.action_name == 'index'   ? 'active' : '' %>"><%= link_to "Register Now", events_path %></li>
+    <li class="<%= controller.action_name == 'index'   ? 'active' : '' %>"><%= link_to signed_in? ? "Register" : "Register Now", events_path %></li>
 
     <% if signed_in? %>
-      <li><%= link_to "Users", users_path %></li>
       <li id="fat-menu" class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           Account <b class="caret"></b>
@@ -35,6 +34,9 @@
         <li class="<%= controller.action_name == 'workshop'   ? 'active' : '' %>"><%= link_to "Workshop", workshop_path %></li>
         <li class="<%= controller.action_name == 'partners'   ? 'active' : '' %>"><%= link_to "Partners & Exhibitors", partners_path %></li>
         <li class="<%= controller.action_name == 'contact_us' ? 'active' : '' %>"><%= link_to "Contact Us", contact_us_path %></li>
+        <% if signed_in? %>
+          <li><%= link_to "Users", users_path %></li>
+        <% end %>
       </ul>
     </li>
   </ul>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131215094601) do
+ActiveRecord::Schema.define(:version => 20131230005637) do
 
   create_table "addresses", :force => true do |t|
     t.string   "firstname"
@@ -56,6 +56,19 @@ ActiveRecord::Schema.define(:version => 20131215094601) do
     t.integer "numcode"
   end
 
+  create_table "coupons", :force => true do |t|
+    t.string   "description"
+    t.string   "type"
+    t.string   "code"
+    t.integer  "usage_count"
+    t.datetime "expired_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "event_id"
+  end
+
+  add_index "coupons", ["expired_at"], :name => "index_coupons_on_expired_at"
+
   create_table "events", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -70,6 +83,18 @@ ActiveRecord::Schema.define(:version => 20131215094601) do
   add_index "events", ["eid"], :name => "index_events_on_eid"
   add_index "events", ["name"], :name => "index_events_on_name"
   add_index "events", ["start_at"], :name => "index_events_on_start_at"
+
+  create_table "line_items", :force => true do |t|
+    t.integer  "event_id"
+    t.decimal  "amount",      :precision => 8, :scale => 2, :default => 0.0, :null => false
+    t.decimal  "cost",        :precision => 8, :scale => 2, :default => 0.0, :null => false
+    t.integer  "quantity"
+    t.string   "description"
+    t.datetime "created_at",                                                 :null => false
+    t.datetime "updated_at",                                                 :null => false
+  end
+
+  add_index "line_items", ["event_id"], :name => "index_line_items_on_event_id"
 
   create_table "orders", :force => true do |t|
     t.integer  "user_id"

@@ -13,13 +13,14 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  validates :password, presence: true, length: { minimum: 6 }
-  validates :password_confirmation, presence: true
+  validates :password, presence: true, length: { minimum: 6 }, :if => :new_or_edit?
+  validates :password_confirmation, presence: true,            :if => :new_or_edit?
   after_validation { self.errors.messages.delete(:password_digest) }
 
   accepts_nested_attributes_for :address, :allow_destroy => true
 
   def add_dummy_email_and_password
+    return if self.id
     self.name  ||= "tmp_user_#{SecureRandom.hex(5)}"
     self.email ||= "#{SecureRandom.hex(5)}@arc4em.org"
     self.password_confirmation ||= self.password = SecureRandom.hex(5)
@@ -29,5 +30,9 @@ class User < ActiveRecord::Base
 
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
+    end
+
+    def new_or_edit?
+      self.id.nil? || !self.password.nil?
     end
 end

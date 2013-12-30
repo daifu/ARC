@@ -1,0 +1,19 @@
+<p>
+  Please choose one type of coupon to create:
+</p>
+<table class="table table-hover">
+  <tr>
+    <th>Action</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+  <% @coupon_types.each do |type| %>
+    <td>
+      <%= link_to type, new_coupon_type_path(type) %>
+    </td>
+    <td>
+      <%= type.description %>
+    </td>
+  <% end %>
+  </tr>
+</table>
