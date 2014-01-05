@@ -1,5 +1,21 @@
 <h1>Registration Information</h1>
 
+<!-- List all the options -->
+<table class="table">
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @LineItem.all.each do |li| %>
+    <tr>
+      <td><%= li.description %></td>
+      <td><%= number_to_currency(li.early_bird_amount) %></td>
+      <td><%= number_to_currency(li.amount) %></td>
+    </tr>
+  <% end %>
+</table>
+
 <div class="center">
   <%= link_to 'Register Now', new_event_order_path(@event), :class => 'btn btn-primary' %>
 </div>

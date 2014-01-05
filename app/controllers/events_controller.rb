@@ -2,7 +2,6 @@ class EventsController < ApplicationController
   before_filter :find_event
 
   def index
-    @order = @event.orders.build
   end
 
   private

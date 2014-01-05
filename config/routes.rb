@@ -87,7 +87,10 @@ ARC4EM::Application.routes.draw do
   resources :coupons do
     collection do
       get :select
+      put :update
     end
   end
+
+  resources :line_items
 
 end

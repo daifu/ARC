@@ -5,6 +5,7 @@
     <th>Code</th>
     <th>Description</th>
     <th>Expired</th>
+    <th>Offer</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,6 +16,7 @@
     <td><%= coupon.code %></td>
     <td><%= coupon.description %></td>
     <td><%= coupon.expired_at.mdyyyy %></td>
+    <td><%= coupon.offer_amount %> Off</td>
     <td><%= link_to 'Show', coupon_url(coupon) %></td>
     <td><%= link_to 'Edit', edit_coupon_path(coupon) %></td>
     <td><%= link_to 'Destroy', coupon_url(coupon), method: :delete, data: { confirm: 'Are you sure?' } %></td>

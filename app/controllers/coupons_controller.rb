@@ -66,8 +66,8 @@ class CouponsController < ApplicationController
     @coupon = Coupon.find(params[:id])
 
     respond_to do |format|
-      if @coupon.update_attributes(params[:coupon])
-        format.html { redirect_to @coupon, notice: 'Coupon was successfully updated.' }
+      if @coupon.update_attributes(params[@coupon.param_id])
+        format.html { redirect_to coupon_url(@coupon), notice: 'Coupon was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
