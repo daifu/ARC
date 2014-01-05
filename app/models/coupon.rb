@@ -1,7 +1,7 @@
 class Coupon < ActiveRecord::Base
   belongs_to :event
 
-  attr_accessible :code, :description, :expired_at, :event_id
+  attr_accessible :code, :description, :expired_at, :event_id, :minimum_amount
   validates_uniqueness_of :code
   validates_presence_of   :code
   validates_presence_of   :expired_at
@@ -12,12 +12,6 @@ class Coupon < ActiveRecord::Base
 
   def self.subclasses
     [DollarOffCoupon, PrecentageOffCoupon]
-  end
-
-  def apply_discount(amt)
-    if amount > minimum
-      amt - amount
-    end
   end
 
   def offer

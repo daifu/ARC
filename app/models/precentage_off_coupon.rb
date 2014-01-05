@@ -14,4 +14,13 @@ class PrecentageOffCoupon < Coupon
   def offer_amount
     %{#{precentage}%}
   end
+
+  def apply_discount(amt)
+    if amt >= minimum_amount
+      amt * (1-precentage/100)
+    else
+      amt
+    end
+  end
+
 end

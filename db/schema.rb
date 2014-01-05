@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140105091159) do
+ActiveRecord::Schema.define(:version => 20140105123038) do
 
   create_table "addresses", :force => true do |t|
     t.string   "firstname"
@@ -62,11 +62,12 @@ ActiveRecord::Schema.define(:version => 20140105091159) do
     t.string   "code"
     t.integer  "usage_count"
     t.datetime "expired_at"
-    t.datetime "created_at",                                                 :null => false
-    t.datetime "updated_at",                                                 :null => false
+    t.datetime "created_at",                                                    :null => false
+    t.datetime "updated_at",                                                    :null => false
     t.integer  "event_id"
-    t.decimal  "amount",      :precision => 8, :scale => 2, :default => 0.0, :null => false
+    t.decimal  "amount",         :precision => 8, :scale => 2, :default => 0.0, :null => false
     t.integer  "precentage"
+    t.decimal  "minimum_amount", :precision => 8, :scale => 2
   end
 
   add_index "coupons", ["expired_at"], :name => "index_coupons_on_expired_at"

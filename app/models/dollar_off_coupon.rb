@@ -17,4 +17,12 @@ class DollarOffCoupon < Coupon
     number_to_currency(amount)
   end
 
+  def apply_discount(amt)
+    if amt >= minimum_amount
+      amt - amount
+    else
+      amt
+    end
+  end
+
 end

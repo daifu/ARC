@@ -11,6 +11,6 @@ class LineItem < ActiveRecord::Base
 
   def early_bird_amount
     early_bird_coupon = DollarOffCoupon.find 12
-    earlyapply_discount.apply_discount(self.amount)
+    early_bird_coupon.apply_discount(self.amount)
   end
 end

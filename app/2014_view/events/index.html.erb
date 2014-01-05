@@ -7,7 +7,7 @@
     <th></th>
     <th></th>
   </tr>
-  <% @LineItem.all.each do |li| %>
+  <% LineItem.all.each do |li| %>
     <tr>
       <td><%= li.description %></td>
       <td><%= number_to_currency(li.early_bird_amount) %></td>
