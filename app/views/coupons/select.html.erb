@@ -3,17 +3,13 @@
 </p>
 <table class="table table-hover">
   <tr>
-    <th>Action</th>
-    <th>Description</th>
+    <th>Choose one action:</th>
   </tr>
-  <tr>
   <% @coupon_types.each do |type| %>
+  <tr>
     <td>
       <%= link_to type, new_coupon_type_path(type) %>
     </td>
-    <td>
-      <%= type.description %>
-    </td>
-  <% end %>
   </tr>
+  <% end %>
 </table>

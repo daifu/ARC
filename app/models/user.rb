@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :events
   belongs_to :address
-  has_many :orders
+  has_many   :orders, :inverse_of => :user
 
   before_save { email.downcase! }
   before_save :create_remember_token

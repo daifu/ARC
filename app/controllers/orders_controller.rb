@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_filter :find_event, :only => [:new]
+  before_filter :find_event, :only => [:new, :create]
   before_filter :find_order, :only => [:edit]
 
   force_ssl
@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
   #
   def create
     @order = Order.new(params[:order])
+    @order.event_id = params[:event_id]
     @order.user.add_dummy_email_and_password
     if @order.save
       redirect_to new_order_payment_path(@order)

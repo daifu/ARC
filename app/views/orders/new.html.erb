@@ -1,9 +1,7 @@
 <%= form_for @order do |f| %>
   <h1>Registration Form</h1>
   <hr />
-  <%= f.fields_for :event, @order.event do |e| %>
-    <%= e.hidden_field :id, :value => e.object.id %>
-  <% end %>
+  <%= hidden_field_tag :event_id, @order.event.id %>
   <%= f.fields_for :user, @order.user do |user| %>
     <%= user.fields_for :address, @order.user.address do |address| %>
       <%= render :partial => 'addresses/form', :locals => {:f => address} %>

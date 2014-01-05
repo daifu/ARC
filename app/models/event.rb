@@ -4,13 +4,13 @@ class Event < ActiveRecord::Base
                     # delete the order while the event is deleted
                     # make sure order.event and event.orders.first.event has the same reference
                     # when event.save will trigger order.save
-  has_many :orders, :dependent => :destroy, :autosave => true
+  has_many :orders
   has_many :line_items, :extend => TotalSum
   has_many :coupons,    :extend => TotalSum
-  has_one :address
+  belongs_to :address
 
-  validates_presence_of :name
-  validates_presence_of :eid
+  validates_presence_of   :name
+  validates_presence_of   :eid
   validates_uniqueness_of :eid
 
   def total

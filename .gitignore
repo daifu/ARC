@@ -26,3 +26,4 @@ doc/
 .tags_sorted_by_file
 .idea/*
 tags
+vendor/cache/*

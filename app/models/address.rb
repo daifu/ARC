@@ -1,15 +1,14 @@
 class Address < ActiveRecord::Base
-  attr_accessible :firstname, :lastname, :address1, :address2, :city, :zipcode, :title, :degree, :organization, :country_id, :state_id, :state
+  attr_accessible :firstname, :lastname, :address1, :address2, :city, :zipcode, :title, :degree, :organization, :country_id, :state_id, :state, :country
 
-  belongs_to :event
-  belongs_to :user
+  has_one :event
+  has_one :user
   belongs_to :country
   belongs_to :state
 
   validates_presence_of :firstname
   validates_presence_of :lastname
   validates_presence_of :address1
-  validates_presence_of :address2
   validates_presence_of :state, if: :is_us?
   validates_presence_of :state_name
   validates_presence_of :city,  if: :is_us?
@@ -28,6 +27,16 @@ class Address < ActiveRecord::Base
 
   def is_us?
     country.iso == 'US' if country
+  end
+
+  def self.default_address
+    Address.new(firstname: 'firstname',
+                lastname:  'lastname',
+                address1:  'Dummy Address',
+                state_name:'California',
+                city:      'Los Angeles',
+                country:   'U.S.',
+                zipcode:   '100000')
   end
 
   private

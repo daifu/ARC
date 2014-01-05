@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131230005637) do
+ActiveRecord::Schema.define(:version => 20131231105535) do
 
   create_table "addresses", :force => true do |t|
     t.string   "firstname"
@@ -98,16 +98,18 @@ ActiveRecord::Schema.define(:version => 20131230005637) do
 
   create_table "orders", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "number"
     t.decimal  "total",                        :precision => 8, :scale => 2
     t.string   "referral_url", :limit => 2048
     t.string   "user_agent",   :limit => 512
     t.datetime "paid_at"
-    t.datetime "created_at",                                                 :null => false
-    t.datetime "updated_at",                                                 :null => false
+    t.datetime "created_at",                                                                          :null => false
+    t.datetime "updated_at",                                                                          :null => false
     t.integer  "event_id"
     t.text     "comment"
+    t.string   "number",       :limit => 10,                                 :default => "C10000000", :null => false
   end
+
+  add_index "orders", ["number"], :name => "index_orders_on_number"
 
   create_table "payments", :force => true do |t|
     t.integer  "order_id"
