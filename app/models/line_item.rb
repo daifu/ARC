@@ -13,4 +13,8 @@ class LineItem < ActiveRecord::Base
     early_bird_coupon = DollarOffCoupon.find 12
     early_bird_coupon.apply_discount(self.amount)
   end
+
+  def early_bird_coupon_id
+    12
+  end
 end

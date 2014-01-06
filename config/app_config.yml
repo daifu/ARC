@@ -1,8 +1,8 @@
 development:
-  year: 2014
+  eid: E10012014
 
 test:
-  year: 2014
+  eid: E10012014
 
 production:
-  year: 2014
+  eid: E10012014

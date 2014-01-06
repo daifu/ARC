@@ -4,18 +4,14 @@
 <table class="table">
   <tr>
     <th></th>
-    <th></th>
-    <th></th>
+    <th>Early Bird Rate</th>
+    <th>Regular Rate</th>
   </tr>
   <% LineItem.all.each do |li| %>
     <tr>
-      <td><%= li.description %></td>
+      <td><%= link_to li.description, event_event_coupon_order_path(:event_id => current_event.id, :coupon_id => li.early_bird_coupon_id) %></td>
       <td><%= number_to_currency(li.early_bird_amount) %></td>
       <td><%= number_to_currency(li.amount) %></td>
     </tr>
   <% end %>
 </table>
-
-<div class="center">
-  <%= link_to 'Register Now', new_event_order_path(@event), :class => 'btn btn-primary' %>
-</div>

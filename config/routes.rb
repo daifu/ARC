@@ -79,11 +79,14 @@ ARC4EM::Application.routes.draw do
   
   resources :events do
     resources :orders
+
+    get '/coupons/:coupon_id/orders/new', to: 'orders#new', as: 'event_coupon_order'
   end
 
   resources :orders do
     resources :payments
   end
+
   resources :coupons do
     collection do
       get :select

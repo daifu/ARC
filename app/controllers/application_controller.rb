@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   before_filter :check_for_conference_year
   before_filter :track_referral_url
 
-  helper_method :check_for_conference_year, :current_user
+  helper_method :check_for_conference_year, :current_user, :current_event
 
   protect_from_forgery
   include SessionsHelper
@@ -33,6 +33,10 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= User.find_by_remember_token(cookies[:remember_token])
+  end
+
+  def current_event
+    @current_event ||= Event.find_by_eid(APP_CONFIG[:eid])
   end
 
   def render_404
