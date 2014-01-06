@@ -3,8 +3,8 @@ require 'spec_helper'
 describe "coupons/index" do
   before(:each) do
     assign(:coupons, [
-      stub_model(Coupon),
-      stub_model(Coupon)
+      stub_model(DollarOffCoupon),
+      stub_model(DollarOffCoupon)
     ])
   end
 

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "coupons/new" do
   before(:each) do
-    assign(:coupon, stub_model(Coupon).as_new_record)
+    assign(:coupon, stub_model(DollarOffCoupon).as_new_record)
   end
 
   it "renders new coupon form" do

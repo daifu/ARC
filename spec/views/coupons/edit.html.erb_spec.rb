@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "coupons/edit" do
   before(:each) do
-    @coupon = assign(:coupon, stub_model(Coupon))
+    @coupon = assign(:coupon, stub_model(DollarOffCoupon))
   end
 
   it "renders the edit coupon form" do
