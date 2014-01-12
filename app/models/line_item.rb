@@ -10,7 +10,7 @@ class LineItem < ActiveRecord::Base
   end
 
   def early_bird_amount
-    early_bird_coupon = DollarOffCoupon.find 12
+    early_bird_coupon = self.event.coupons.where("code='EARLYBIRD'")
     early_bird_coupon.apply_discount(self.amount)
   end
 
