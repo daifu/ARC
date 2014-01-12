@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
   # Create an order while people click the Register Now button
   #
   def update
-    @order.update_attributes!(params[:order])
+    @order.attributes = params[:order]
     @order.user.add_dummy_email_and_password
     if @order.save
       redirect_to new_order_payment_path(@order)
