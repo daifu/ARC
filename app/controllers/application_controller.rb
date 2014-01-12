@@ -29,11 +29,11 @@ class ApplicationController < ActionController::Base
 
   def track_referral_url
     # should only track the first occurance of the referrer
-    session[:referral_url] ||= request.referral_url
+    session[:referral_url] ||= request.referrer
   end
 
   def track_user_agent
-    session[:user_agent] ||= request.user_agent
+    session[:user_agent] ||= request.env['HTTP_USER_AGENT']
   end
 
   def current_user
