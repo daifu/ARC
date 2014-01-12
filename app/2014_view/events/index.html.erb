@@ -9,7 +9,7 @@
   </tr>
   <% LineItem.all.each do |li| %>
     <tr>
-      <td><%= link_to li.description, event_event_coupon_order_path(:event_id => current_event.id, :coupon_id => li.early_bird_coupon_id) %></td>
+      <td><%= link_to li.description, event_event_coupon_order_path(:event_id => current_event.id, :coupon_id => li.early_bird_coupon_id, :line_item_id => li.id) %></td>
       <td><%= number_to_currency(li.early_bird_amount) %></td>
       <td><%= number_to_currency(li.amount) %></td>
     </tr>

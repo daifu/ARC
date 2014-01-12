@@ -10,7 +10,7 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem 'activemerchant'
 gem 'state_machine'
-gem 'jquery-rails', '~> 3.0.4'
+gem "jquery-rails"
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

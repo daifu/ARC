@@ -254,7 +254,7 @@ DEPENDENCIES
   growl (= 1.0.3)
   guard-rspec (= 1.2.1)
   guard-spork (= 1.2.0)
-  jquery-rails (~> 3.0.4)
+  jquery-rails
   mocha
   paperclip
   pg (= 0.12.2)

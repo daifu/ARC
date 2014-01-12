@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140105123038) do
+ActiveRecord::Schema.define(:version => 20140112042353) do
 
   create_table "addresses", :force => true do |t|
     t.string   "firstname"
@@ -111,6 +111,9 @@ ActiveRecord::Schema.define(:version => 20140105123038) do
     t.integer  "event_id"
     t.text     "comment"
     t.string   "number",       :limit => 10,                                 :default => "C10000000", :null => false
+    t.integer  "coupon_id"
+    t.integer  "line_item_id"
+    t.string   "state",        :limit => 100
   end
 
   add_index "orders", ["number"], :name => "index_orders_on_number"

@@ -1,15 +1,15 @@
 class OrdersController < ApplicationController
   before_filter :find_event, :only => [:new, :create]
-  before_filter :find_order, :only => [:edit]
+  before_filter :find_order, :only => [:edit, :update]
 
   force_ssl
 
   # Create an order while people click the Register Now button
   #
-  def create
-    @order = Order.new(params[:order])
-    @order.event_id = params[:event_id]
+  def update
+    @order.update_attributes!(params[:order])
     @order.user.add_dummy_email_and_password
+    debugger
     if @order.save
       redirect_to new_order_payment_path(@order)
     else
@@ -19,15 +19,13 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @order = @event.orders.build
-    @order.user = find_user
-    @order.user.address = Address.new(:country_id => 214) if @order.user.address.nil?
-    @countries = Country.all
-    @states = State.all
   end
 
   def edit
     @order.user = find_user
+    @order.user.address = Address.new(:country_id => 214) if @order.user.address.nil?
+    @countries = Country.all
+    @states = State.all
   end
 
   private

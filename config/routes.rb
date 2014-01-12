@@ -80,7 +80,7 @@ ARC4EM::Application.routes.draw do
   resources :events do
     resources :orders
 
-    get '/coupons/:coupon_id/orders/new', to: 'orders#new', as: 'event_coupon_order'
+    get '/coupons/:coupon_id/line_item/:line_item_id/orders/new', to: 'events#create_order', as: 'event_coupon_order'
   end
 
   resources :orders do

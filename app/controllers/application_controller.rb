@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_filter :check_for_conference_year
   before_filter :track_referral_url
+  before_filter :track_user_agent
 
   helper_method :check_for_conference_year, :current_user, :current_event
 
@@ -28,7 +29,11 @@ class ApplicationController < ActionController::Base
 
   def track_referral_url
     # should only track the first occurance of the referrer
-    session[:referral_url] ||= request.referrer
+    session[:referral_url] ||= request.referral_url
+  end
+
+  def track_user_agent
+    session[:user_agent] ||= request.user_agent
   end
 
   def current_user
