@@ -11,7 +11,7 @@ class PaymentsController < ApplicationController
   private
 
   def find_order
-    @order = Order.find_by_number(params[:id])
+    @order = Order.find_by_number(params[:order_id])
     render_404 unless @order
   end
 end

@@ -9,7 +9,6 @@ class OrdersController < ApplicationController
   def update
     @order.update_attributes!(params[:order])
     @order.user.add_dummy_email_and_password
-    debugger
     if @order.save
       redirect_to new_order_payment_path(@order)
     else
