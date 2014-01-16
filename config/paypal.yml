@@ -1,0 +1,14 @@
+development: &sandbox
+  username: paypal_sandbox-facilitator_api1.arc4em.org
+  password: 1389519501
+  signature: AFcWxV21C7fd0v3bYYYRCpSSRl31Arf9RpxsB1MBfVo2yYVsggHItm38
+  sandbox: true
+
+test:
+  <<: *sandbox
+
+production: &production
+  username: ENV['PAYPAL_USERNAME']
+  password: ENV['PAYPAL_PASSWORD']
+  signature: ENV['PAYPAL_SIGNATURE']
+  sandbox: false

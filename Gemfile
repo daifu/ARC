@@ -11,6 +11,7 @@ gem 'aws-sdk'
 gem 'activemerchant'
 gem 'state_machine'
 gem "jquery-rails"
+gem "paypal-express"
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
