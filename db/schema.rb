@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140112042353) do
+ActiveRecord::Schema.define(:version => 20140115105548) do
 
   create_table "addresses", :force => true do |t|
     t.string   "firstname"
@@ -125,6 +125,17 @@ ActiveRecord::Schema.define(:version => 20140112042353) do
     t.boolean  "has_errors"
     t.datetime "created_at",                                                :null => false
     t.datetime "updated_at",                                                :null => false
+  end
+
+  create_table "paypal_txns", :force => true do |t|
+    t.string   "token"
+    t.string   "identifier"
+    t.string   "payer_id"
+    t.string   "transaction_id"
+    t.string   "payment_status"
+    t.integer  "amount"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "presentations", :force => true do |t|
