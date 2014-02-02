@@ -66,5 +66,11 @@ module ARC4EM
 
     # Fixed deployment broken at rake assets:precompile
     config.assets.initialize_on_precompile = false
+
+    I18n.enforce_available_locales = false
+
+    config.generators do |g|
+      g.fixture_replacement :factory_girl
+    end
   end
 end

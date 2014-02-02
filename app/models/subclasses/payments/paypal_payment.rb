@@ -1,5 +1,5 @@
 class PaypalPayment < Payment
-  has_many :paypal_txn
+  has_many :paypal_txns
 
   def capture
   end

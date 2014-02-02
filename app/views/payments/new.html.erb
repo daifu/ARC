@@ -1,2 +1,25 @@
 <h1>Payment</h1>
 
+<%= content_tag :section, :class => :popup do %>
+  <div class="boxes">
+    <%= render @payment %>
+  </div>
+<% end %>
+
+<%= content_for :bottom do %>
+  <script src="https://www.paypalobjects.com/js/external/dg.js"></script>
+  <script>
+    $(function () {
+      var popup_forms = $('.popup form');
+      $.each(popup_forms, function (index, form) {
+        var sandbox = <%= Paypal.sandbox?.to_json %>;
+        var submit_id = 'paypayl_submit_' + index;
+        $('input[type=submit]', form).attr({id: submit_id});
+        flow_config = {trigger: submit_id};
+        if (sandbox) flow_config.stage = sandbox;
+        window.paypal_flows = [];
+        window.paypal_flows.push(new PAYPAL.apps.DGFlow(flow_config));
+      });
+    });
+  </script>
+<% end %>

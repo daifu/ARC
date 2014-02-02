@@ -84,7 +84,13 @@ ARC4EM::Application.routes.draw do
   end
 
   resources :orders do
-    resources :payments
+    resources :payments, :only => [:new, :show, :create, :destroy] do
+      collection do
+        get :success
+        get :cancel
+        post :notify
+      end
+    end
   end
 
   resources :coupons do
