@@ -10,9 +10,9 @@ FactoryGirl.define do
     factory.phone      { Faker::PhoneNumber.phone_number }
     factory.state_name  { Faker::Address.state }
     factory.alternative_phone { Faker::PhoneNumber.phone_number }
-  
-    # associations: 
-    factory.country { 
+
+    # associations:
+    factory.country {
       FactoryGirl.create(:united_states)
     }
   end

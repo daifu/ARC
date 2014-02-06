@@ -8,8 +8,9 @@ describe "line_items/edit" do
   it "renders the edit line_item form" do
     render
 
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "form[action=?][method=?]", line_item_path(@line_item), "post" do
-    end
+    # Run the generator again with the --webrat flag
+    # if you want to use webrat matchers
+    assert_select "form[action=?][method=?]",
+                  line_item_path(@line_item), "post" do; end
   end
 end

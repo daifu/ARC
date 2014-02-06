@@ -1,5 +1,5 @@
 <%= form_for payment, :url => order_payments_path(@order) do |f| %>
   <%= f.hidden_field :amount, :value => @order.total %>
-  <%= f.hidden_field :popup, :value => true %>
+  <%= f.hidden_field :type %>
   <%= f.submit 'Pay' %>
 <% end %>

@@ -1,3 +1,4 @@
+# CouponController, that generate coupons
 class CouponsController < ApplicationController
   before_filter :get_coupon_class,   :only => [:create]
   before_filter :fixed_expired_date, :only => [:create]
@@ -51,11 +52,12 @@ class CouponsController < ApplicationController
 
     respond_to do |format|
       if @coupon.save
-        format.html { redirect_to  coupon_url(@coupon), notice: 'Coupon was successfully created.' }
-        format.json { render json: coupon_url(@coupon), status: :created, location: @coupon }
+        format.html do
+          redirect_to coupon_url(@coupon),
+          notice: 'Coupon was successfully created.'
+        end
       else
         format.html { render action: "new" }
-        format.json { render json: @coupon.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -67,11 +69,12 @@ class CouponsController < ApplicationController
 
     respond_to do |format|
       if @coupon.update_attributes(params[@coupon.param_id])
-        format.html { redirect_to coupon_url(@coupon), notice: 'Coupon was successfully updated.' }
-        format.json { head :no_content }
+        format.html do
+          redirect_to coupon_url(@coupon),
+          notice: 'Coupon was successfully updated.'
+        end
       else
         format.html { render action: "edit" }
-        format.json { render json: @coupon.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -95,6 +98,8 @@ class CouponsController < ApplicationController
   end
 
   def fixed_expired_date
-    params[@coupon_type][:expired_at] = Date.strptime(params[@coupon_type][:expired_at],'%m/%d/%Y').yyyymmddhhii_hyphen
+    params[@coupon_type][:expired_at] = Date.strptime(
+      params[@coupon_type][:expired_at],
+      '%m/%d/%Y').yyyymmddhhii_hyphen
   end
 end

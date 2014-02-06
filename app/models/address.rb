@@ -1,5 +1,7 @@
 class Address < ActiveRecord::Base
-  attr_accessible :firstname, :lastname, :address1, :address2, :city, :zipcode, :title, :degree, :organization, :country_id, :state_id, :state, :country
+  attr_accessible :firstname, :lastname, :address1, :address2,
+                  :city, :zipcode, :title, :degree, :organization,
+                  :country_id, :state_id, :state, :country
 
   has_one :event
   has_one :user
@@ -42,12 +44,16 @@ class Address < ActiveRecord::Base
   private
 
     def phone_number_is_ok
-      errors.add(:phone, 'is too short, please include area code') if self.phone && sanitize_number(self.phone).length < 10
+      if self.phone && sanitize_number(self.phone).length < 10
+        errors.add(:phone, 'is too short, please include area code')
+      end
     end
 
     def ensure_state_name_is_prescence_for_us
       # ensure state name is here for us
-      self.state_name = self.state.name if is_us? && self.state_name.nil? && state
+      if is_us? && self.state_name.nil? && state
+        self.state_name = self.state.name
+      end
     end
 
 end

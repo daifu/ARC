@@ -1,7 +1,11 @@
 class PrecentageOffCoupon < Coupon
   attr_accessible :precentage
 
-  validates :precentage, :numericality => { :greater_than => 0, :less_than_or_equal_to => 100 }
+  validates :precentage,
+            :numericality => {
+              :greater_than => 0,
+              :less_than_or_equal_to => 100
+            }
 
   def offer
     :precentage

@@ -1,3 +1,4 @@
+# Session controller
 class SessionsController < ApplicationController
 
   def new

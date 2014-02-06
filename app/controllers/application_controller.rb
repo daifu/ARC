@@ -1,3 +1,4 @@
+# Main application controller
 class ApplicationController < ActionController::Base
   before_filter :check_for_conference_year
   before_filter :track_referral_url

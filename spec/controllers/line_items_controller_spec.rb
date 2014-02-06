@@ -2,12 +2,14 @@ require 'spec_helper'
 
 describe LineItemsController do
 
-  # This should return the minimal set of attributes required to create a valid
+  # This should return the minimal set of attributes
+  # required to create a valid
   # LineItem. As you add validations to LineItem, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) { {:quantity => 100} }
 
-  # This should return the minimal set of values that should be in the session
+  # This should return the minimal set of values
+  # that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # LineItemsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
@@ -84,13 +86,19 @@ describe LineItemsController do
     describe "with valid params" do
       it "assigns the requested line_item as @line_item" do
         line_item = LineItem.create! valid_attributes
-        put :update, {:id => line_item.to_param, :line_item => valid_attributes}, valid_session
+        put :update, {
+          :id => line_item.to_param,
+          :line_item => valid_attributes
+        }, valid_session
         assigns(:line_item).should eq(line_item)
       end
 
       it "redirects to the line_item" do
         line_item = LineItem.create! valid_attributes
-        put :update, {:id => line_item.to_param, :line_item => valid_attributes}, valid_session
+        put :update, {
+          :id => line_item.to_param,
+          :line_item => valid_attributes
+        }, valid_session
         response.should redirect_to(line_item)
       end
     end
@@ -100,7 +108,10 @@ describe LineItemsController do
         line_item = LineItem.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         LineItem.any_instance.stub(:save).and_return(false)
-        put :update, {:id => line_item.to_param, :line_item => {  }}, valid_session
+        put :update, {
+          :id => line_item.to_param,
+          :line_item => {  }
+        }, valid_session
         assigns(:line_item).should eq(line_item)
       end
     end

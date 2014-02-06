@@ -8,10 +8,9 @@ gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'paperclip'
 gem 'aws-sdk'
-gem 'activemerchant'
 gem 'state_machine'
-gem "jquery-rails"
-gem "paypal-express"
+gem 'jquery-rails'
+gem 'activemerchant', '1.42.4'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

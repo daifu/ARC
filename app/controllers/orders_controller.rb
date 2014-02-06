@@ -1,3 +1,4 @@
+# Orders controller
 class OrdersController < ApplicationController
   before_filter :find_event, :only => [:new, :create]
   before_filter :find_order, :only => [:edit, :update]
@@ -22,7 +23,9 @@ class OrdersController < ApplicationController
 
   def edit
     @order.user = find_user
-    @order.user.address = Address.new(:country_id => 214) if @order.user.address.nil?
+    if @order.user.address.nil?
+      @order.user.address = Address.new(:country_id => 214)
+    end
     @countries = Country.all
     @states = State.all
   end

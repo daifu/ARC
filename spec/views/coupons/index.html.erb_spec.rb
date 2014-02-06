@@ -10,6 +10,7 @@ describe "coupons/index" do
 
   it "renders a list of coupons" do
     render
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
+    # Run the generator again with the --webrat flag
+    # if you want to use webrat matchers
   end
 end

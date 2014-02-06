@@ -1,3 +1,4 @@
+# Event controller
 class EventsController < ApplicationController
   before_filter :find_event
 

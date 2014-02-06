@@ -8,8 +8,10 @@ describe "coupons/edit" do
   it "renders the edit coupon form" do
     render
 
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "form", :action => coupons_path(@coupon), :method => "post" do
-    end
+    # Run the generator again with the --webrat flag
+    # if you want to use webrat matchers
+    assert_select "form",
+                  :action => coupons_path(@coupon),
+                  :method => "post" do; end
   end
 end

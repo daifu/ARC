@@ -27,3 +27,4 @@ doc/
 .idea/*
 tags
 vendor/cache/*
+.gemtags

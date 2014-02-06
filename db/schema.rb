@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140201074103) do
+ActiveRecord::Schema.define(:version => 20140203045836) do
 
   create_table "addresses", :force => true do |t|
     t.string   "firstname"
@@ -138,6 +138,12 @@ ActiveRecord::Schema.define(:version => 20140201074103) do
     t.datetime "updated_at",        :null => false
     t.integer  "txn_type"
     t.integer  "paypal_payment_id"
+    t.string   "popup_uri"
+    t.string   "ack"
+    t.string   "pending_reason"
+    t.string   "transaction_type"
+    t.string   "payment_type"
+    t.text     "response_params"
   end
 
   add_index "paypal_txns", ["paypal_payment_id"], :name => "index_paypal_txns_on_paypal_payment_id"

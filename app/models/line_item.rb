@@ -1,6 +1,6 @@
 class LineItem < ActiveRecord::Base
   attr_accessible :event_id, :description, :amount, :cost, :quantity
-  
+
   belongs_to :event
 
   validates_presence_of :quantity
