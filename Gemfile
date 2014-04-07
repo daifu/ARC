@@ -10,6 +10,7 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem 'state_machine'
 gem 'jquery-rails'
+gem 'paypal-express'
 gem 'activemerchant', '1.42.4'
 
 group :development, :test do
