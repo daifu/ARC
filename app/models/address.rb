@@ -1,8 +1,4 @@
 class Address < ActiveRecord::Base
-  attr_accessible :firstname, :lastname, :address1, :address2,
-                  :city, :zipcode, :title, :degree, :organization,
-                  :country_id, :state_id, :state, :country
-
   has_one :event
   has_one :user
   belongs_to :country

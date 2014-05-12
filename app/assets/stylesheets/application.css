@@ -9,12 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require custom.css
- *= require global.css
- *= require sessions.css
- *= require static_pages.css
- *= require users.css
- *= require registration.css
- *= require justified-nav
- *= require bootstrap-datetimepicker.min
+ *= stub twbs-variables
+ *= require twbs
+ *= require_tree .
 */

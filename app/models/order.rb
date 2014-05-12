@@ -1,7 +1,4 @@
 class Order < ActiveRecord::Base
-  attr_accessible :comment, :user_attributes, :user_id, :event_id,
-                  :coupon_id, :line_item_id, :referral_url, :user_agent
-
   belongs_to :user
   belongs_to :event
   belongs_to :coupon

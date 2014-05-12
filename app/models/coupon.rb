@@ -1,7 +1,6 @@
 class Coupon < ActiveRecord::Base
   belongs_to :event
 
-  attr_accessible :code, :description, :expired_at, :event_id, :minimum_amount
   validates_uniqueness_of :code
   validates_presence_of   :code
   validates_presence_of   :expired_at

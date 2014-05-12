@@ -11,8 +11,9 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.turbolinks
+//= require twbs/bootstrap
 //= require jquery_ujs
-//= require bootstrap/dropdown
 //= require inheritance
 //= require static_pages
 //= require arc4em

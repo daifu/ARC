@@ -41,7 +41,7 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-    @line_item = LineItem.new(params[:line_item])
+    @line_item = LineItem.new(line_item_params)
 
     respond_to do |format|
       if @line_item.save
@@ -61,7 +61,7 @@ class LineItemsController < ApplicationController
     @line_item = LineItem.find(params[:id])
 
     respond_to do |format|
-      if @line_item.update_attributes(params[:line_item])
+      if @line_item.update_attributes(line_item_params)
         format.html do
           redirect_to @line_item,
           notice: 'Line item was successfully updated.'
@@ -82,5 +82,11 @@ class LineItemsController < ApplicationController
       format.html { redirect_to line_items_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def line_item_params
+    params[:line_item].permit(:event_id, :description, :amount, :cost, :quantity)
   end
 end

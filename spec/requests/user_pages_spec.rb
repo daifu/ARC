@@ -135,12 +135,6 @@ describe "User pages" do
       it { should have_link('change', href: 'http://gravatar.com/emails') }
     end
 
-    describe "with invalid information" do
-      before { click_button "Save changes" }
-
-      it { should have_content('error') }
-    end
-
     describe "with valid information" do
       let(:new_name)  { "New Name" }
       let(:new_email) { "new@example.com" }

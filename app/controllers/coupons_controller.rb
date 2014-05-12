@@ -48,7 +48,7 @@ class CouponsController < ApplicationController
   # POST /coupons
   # POST /coupons.json
   def create
-    @coupon = @coupon_type.classify.constantize.new(params[@coupon_type])
+    @coupon = @coupon_type.classify.constantize.new(coupon_type_params)
 
     respond_to do |format|
       if @coupon.save
@@ -68,7 +68,7 @@ class CouponsController < ApplicationController
     @coupon = Coupon.find(params[:id])
 
     respond_to do |format|
-      if @coupon.update_attributes(params[@coupon.param_id])
+      if @coupon.update_attributes(coupon_id_params)
         format.html do
           redirect_to coupon_url(@coupon),
           notice: 'Coupon was successfully updated.'
@@ -101,5 +101,13 @@ class CouponsController < ApplicationController
     params[@coupon_type][:expired_at] = Date.strptime(
       params[@coupon_type][:expired_at],
       '%m/%d/%Y').yyyymmddhhii_hyphen
+  end
+
+  def coupon_id_params
+    params[@coupon.param_id].permit(:code, :description, :expired_at, :event_id, :minimum_amount)
+  end
+
+  def coupon_type_params
+    params.require(@coupon_type).permit(:code, :description, :expired_at, :event_id, :minimum_amount)
   end
 end

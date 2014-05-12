@@ -1,50 +1,67 @@
 source 'https://rubygems.org'
 
-ruby '1.9.3'
+ruby '2.1.2'
+gem 'rails', '4.1.1'
 
-gem 'rails', '3.2.15'
-gem 'bcrypt-ruby', '3.0.1'
-gem 'will_paginate', '3.0.3'
-gem 'bootstrap-will_paginate', '0.0.6'
+# Servers
+gem 'puma'
+
+# App monitoring
+# gem 'airbrake'
+gem 'newrelic_rpm'
+
+# Miscellanea
+gem 'google-analytics-rails'
+
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'state_machine'
 gem 'jquery-rails'
+
+# Payment
 gem 'paypal-express'
 gem 'activemerchant', '1.42.4'
 
-group :development, :test do
-  gem 'sqlite3', '1.3.5'
-  gem 'rspec-rails', '2.14.0'
-  gem 'guard-rspec', '1.2.1'
-  gem 'guard-spork', '1.2.0'
-  gem 'childprocess', '0.3.6'
-  gem 'spork', '0.9.2'
-  gem 'faker', '1.2.0'
-  gem 'debugger'
-  gem 'ruby-graphviz', :require => 'graphviz' # Optional: only required for graphing
-  gem "mocha", :require => false
-end
-
+# Assets
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'sass-rails',   '3.2.5'
-  gem 'bootstrap-sass', '~> 3.0.2.0'
-  gem 'coffee-rails', '3.2.2'
-  gem 'uglifier', '1.2.3'
+gem 'sass-rails', '~> 4.0.3'
+gem 'autoprefixer-rails'
+gem 'jquery-turbolinks'
+gem 'twbs_sass_rails'
+gem 'uglifier', '1.2.3'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-bootstrap'
+
+group :development do
+  gem 'better_errors'
+  gem 'bullet'
+  gem 'binding_of_caller'
+  gem 'meta_request'
+  gem 'spring'
+  gem 'spring-commands-rspec'
 end
 
+
 group :test do
+  gem 'byebug'
+  gem 'ruby-growl'
+  gem 'bcrypt-ruby', '3.0.1'
   gem 'capybara', '1.1.2'
   gem 'factory_girl_rails', '4.1.0'
-  gem 'cucumber-rails', '1.2.1', :require => false
-  gem 'database_cleaner', '0.7.0'
-  # gem 'launchy', '2.1.0'
-  # gem 'rb-fsevent', '0.9.1', :require => false
-  gem 'growl', '1.0.3'
+  gem 'faker'
+  gem 'pry'
+  gem 'pry-byebug'
+  gem 'database_cleaner'
+  gem 'pry-rails'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'simplecov', '~> 0.7.1'
 end
 
 group :production do
   gem 'pg', '0.12.2'
+  gem 'rails_12factor'
+  gem 'rack-timeout'
 end

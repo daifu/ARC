@@ -65,17 +65,17 @@ ARC4EM::Application.routes.draw do
       
   root to: 'static_pages#home'
 
-  match '/signup',  to: 'users#new'
-  match '/signin',  to: 'sessions#new'
-  match '/signout', to: 'sessions#destroy', via: :delete
+  get '/signup',  to: 'users#new'
+  get '/signin',  to: 'sessions#new'
+  delete '/signout', to: 'sessions#destroy'
       
-  match '/about_us',  to: 'static_pages#about_us'
-  match '/program',   to: 'static_pages#program'
-  match '/workshop',  to: 'static_pages#workshop'
-  match '/partners',  to: 'static_pages#partners'
-  match '/travel',    to: 'static_pages#travel'
-  match '/contact_us',to: 'static_pages#contact_us'
-  match '/coupons/new/:coupon_type', to: 'coupons#new', as: 'new_coupon_type'
+  get '/about_us',  to: 'static_pages#about_us'
+  get '/program',   to: 'static_pages#program'
+  get '/workshop',  to: 'static_pages#workshop'
+  get '/partners',  to: 'static_pages#partners'
+  get '/travel',    to: 'static_pages#travel'
+  get '/contact_us',to: 'static_pages#contact_us'
+  get '/coupons/new/:coupon_type', to: 'coupons#new', as: 'new_coupon_type'
   
   resources :events do
     resources :orders

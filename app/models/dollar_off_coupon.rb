@@ -1,8 +1,6 @@
 class DollarOffCoupon < Coupon
   include ActionView::Helpers::NumberHelper
 
-  attr_accessible :amount
-
   validates :amount, :numericality => { :greater_than => 0 }
 
   def offer
