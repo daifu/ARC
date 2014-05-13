@@ -28,3 +28,4 @@ doc/
 tags
 vendor/cache/*
 .gemtags
+coverage/*

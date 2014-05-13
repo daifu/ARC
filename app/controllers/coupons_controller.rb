@@ -104,10 +104,10 @@ class CouponsController < ApplicationController
   end
 
   def coupon_id_params
-    params[@coupon.param_id].permit(:code, :description, :expired_at, :event_id, :minimum_amount)
+    params[@coupon.param_id].permit(:code, :description, :expired_at, :event_id, :minimum_amount, :amount)
   end
 
   def coupon_type_params
-    params.require(@coupon_type).permit(:code, :description, :expired_at, :event_id, :minimum_amount)
+    params.require(@coupon_type).permit(:code, :description, :expired_at, :event_id, :minimum_amount, :amount)
   end
 end

@@ -35,8 +35,12 @@ class Order < ActiveRecord::Base
     self.total = self.coupon.apply_discount(self.line_item.amount.to_f)
   end
 
+  def default_number?
+    self.number == "C10000000"
+  end
+
   def ensure_number
-    if self.number == "C10000000"
+    if default_number?
       self.number = "C100#{RandomGenerator.generate_number(5)}"
     end
   end

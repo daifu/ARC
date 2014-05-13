@@ -41,6 +41,7 @@ group :development do
   gem 'meta_request'
   gem 'spring'
   gem 'spring-commands-rspec'
+  gem 'zeus'
 end
 
 

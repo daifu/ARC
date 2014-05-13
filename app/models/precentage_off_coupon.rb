@@ -1,5 +1,4 @@
 class PrecentageOffCoupon < Coupon
-  attr_accessible :precentage
 
   validates :precentage,
             :numericality => {
